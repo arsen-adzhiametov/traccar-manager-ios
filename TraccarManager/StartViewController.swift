@@ -58,9 +58,9 @@ class StartViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         serverField.delegate = self
-        serverField.optionArray = ["URL_1",
-                                   "URL_2",
-                                   "URL_3"]
+        if let data = UserDefaults.standard.value(forKey:"serverUrlArray") as? Data {
+            serverField.optionArray = try! PropertyListDecoder().decode(Array<String>.self, from: data)
+        }
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -70,7 +70,19 @@ class StartViewController: UIViewController, UITextFieldDelegate {
 
     func onSuccess() {
         UserDefaults.standard.set(serverField.text, forKey: "url")
+        storeProvidedUrlIfRequired()
         performSegue(withIdentifier: "StartSegue", sender: self)
+    }
+    
+    func storeProvidedUrlIfRequired() {
+        var urls = [String]()
+        if let data = UserDefaults.standard.value(forKey:"serverUrlArray") as? Data {
+            urls = try! PropertyListDecoder().decode(Array<String>.self, from: data)
+        }
+        if (!urls.contains(serverField.text!)) {
+            urls.append(serverField.text!)
+        }
+        UserDefaults.standard.set(try? PropertyListEncoder().encode(urls), forKey:"serverUrlArray")
     }
     
     func onError() {

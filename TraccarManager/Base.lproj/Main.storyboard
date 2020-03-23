@@ -78,8 +78,8 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f6K-5s-OQ0" userLabel="Info">
-                                <rect key="frame" x="16" y="131.5" width="343" height="81.5"/>
-                                <string key="text">This screen will be shown only once. After you click the button, server address will be saved in preferences. To change it, clear app data from application manager.</string>
+                                <rect key="frame" x="16" y="131.5" width="343" height="162.5"/>
+                                <string key="text">This screen will be shown every time application is launched if it was not running. After you put correct server address and click the button, server address will be saved in preferences and will be shown in dropdown next time among other saved URLs. To remove all saved URLs, clear app data from application manager.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
